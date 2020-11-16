@@ -1,0 +1,10 @@
+# goal 
+std_msgs/UInt16MultiArray goal_angles
+
+---
+# result
+bool reached_goal
+
+---
+# feedback
+std_msgs/UInt16MultiArray arduino_angles
