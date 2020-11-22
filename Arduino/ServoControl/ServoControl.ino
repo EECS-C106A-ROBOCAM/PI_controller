@@ -26,15 +26,13 @@
 ros::NodeHandle  nh;
 
 Servo servo1;
-Servo servo2;
-Servo servo3;
+//Servo servo2;
 
 int s1_pin = 9;
-int s2_pin = 10;
-int s3_pin = 11;
+//int s2_pin = 10;
 
 void servo_cb( const std_msgs::UInt16MultiArray& cmd_msg){
-  servo.write(cmd_msg.data[0]); //set servo angle, should be from 0-180 
+  servo1.write(cmd_msg.data[0]); //set servo angle, should be from 0-180 
 
 }
 
@@ -43,15 +41,13 @@ ros::Subscriber<std_msgs::UInt16MultiArray> sub("/arduino_command", servo_cb);
 
 void setup(){
   pinMode(s1_pin, OUTPUT);
-  pinMode(s2_pin, OUTPUT);
-  pinMode(s3_pin, OUTPUT);
+//  pinMode(s2_pin, OUTPUT);
 
   nh.initNode();
   nh.subscribe(sub);
   
   servo1.attach(s1_pin); //attach to servo 1
-  servo2.attach(s2_pin); //attach to servo 2
-  servo3.attach(s3_pin); //attach to servo 3
+//  servo2.attach(s2_pin); //attach to servo 2
 
 }
 
