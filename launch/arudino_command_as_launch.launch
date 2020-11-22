@@ -1,0 +1,6 @@
+<launch>
+    <node name="serial_node" pkg="rosserial_python" type="serial_node.py">
+        <param name="port" value="/dev/ttyACM0"/>
+    </node>
+    <node name="PI_control" pkg="PI_controller" type="servo_controller_as.py" output="screen"/>
+</launch>
