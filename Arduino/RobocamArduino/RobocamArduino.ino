@@ -26,7 +26,7 @@ const short PIN_CAM_PITCH = 0;
 const short PIN_CAM_YAW = 0;
 const short PIN_CAM_ROLL = 0;
 
-const char[] ROS_TOPIC_NAME = "/arduino_joints";
+const char ROS_TOPIC_NAME[] = "/arduino_joints";
 
 
 /**
@@ -137,7 +137,7 @@ bool actuateMotors(short* motorAngles, char mode = 'i', int duration = 500, int 
 */
 void motorCallback(const sensor_msgs::JointState& jointStateMsg) {
   float* jointAngles = jointStateMsg.position;
-  short* motorAngles[6];
+  short motorAngles[6];
   if (!jointToMotorAngles(jointAngles, motorAngles)) {
     // Error: the joint angles we received force the motor out of range!
     // TODO(JS): Some kind of error sent over ROS
